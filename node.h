@@ -37,7 +37,7 @@ public:
         level++;
     }
 
-    void getLevel()
+    int getLevel()
     {
         return level;
     }
