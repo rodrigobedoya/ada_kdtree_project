@@ -32,7 +32,7 @@ public:
 	    int i = Heap<T>::size - 1; 
 	    Heap<T>::data[i] = k; 
 	  
-	    while (i != 0 && Heap<T>::data[Heap<T>::parentIndex(i)] > Heap<T>::data[i]) 
+	    while (i != 0 && Heap<T>::data[Heap<T>::parentIndex(i)]->comparingVal() > Heap<T>::data[i]->comparingVal()) 
 	    { 
 	        Heap<T>::swap(&Heap<T>::data[i], &Heap<T>::data[Heap<T>::parentIndex(i)]); 
 	       i = Heap<T>::parentIndex(i); 
@@ -43,7 +43,7 @@ public:
 	void decreaseKey(int i, T new_val) 
 	{ 
 	    Heap<T>::data[i] = new_val; 
-	    while (i != 0 && Heap<T>::data[Heap<T>::parentIndex(i)] > Heap<T>::data[i]) 
+	    while (i != 0 && Heap<T>::data[Heap<T>::parentIndex(i)]->comparingVal() > Heap<T>::data[i]->comparingVal()) 
 	    { 
 	        Heap<T>::swap(&Heap<T>::data[i], &Heap<T>::data[Heap<T>::parentIndex(i)]); 
 	       i = Heap<T>::parentIndex(i); 
@@ -84,9 +84,9 @@ public:
 	    int l = Heap<T>::leftIndex(i); 
 	    int r = Heap<T>::rightIndex(i); 
 	    int smallest = i; 
-	    if (l < Heap<T>::size && Heap<T>::data[l] < Heap<T>::data[i]) 
+	    if (l < Heap<T>::size && Heap<T>::data[l]->comparingVal() < Heap<T>::data[smallest]->comparingVal()) 
 	        smallest = l; 
-	    if (r < Heap<T>::size && Heap<T>::data[r] < Heap<T>::data[smallest]) 
+	    if (r < Heap<T>::size && Heap<T>::data[r]->comparingVal() < Heap<T>::data[smallest]->comparingVal()) 
 	        smallest = r; 
 	    if (smallest != i) 
 	    { 

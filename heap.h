@@ -21,12 +21,25 @@ public:
 
     T operator [] (int index)
     {
-    	return Heap<T>::data[index];
+    	return data[index];
+    }
+
+    T at(int index)
+    {
+        return data[index];
     }
 
     T getRoot() 
     {
-    	return Heap<T>::data[0];
+    	return data[0];
+    }
+
+    void print()
+    {
+        for(int i = 0; i < size;i++)
+        {
+            data[i]->print(); 
+        }
     }
 
     virtual T extractRoot(){}

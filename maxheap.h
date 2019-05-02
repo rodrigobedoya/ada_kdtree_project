@@ -16,7 +16,7 @@ public:
 	    Heap<T>::data = new T[max_size]; 
 	}
     
-    int getMax() 
+    T getMax() 
     { 
     	return Heap<T>::data[0];
     } 
@@ -25,6 +25,7 @@ public:
 	{ 
 	    if (Heap<T>::size == Heap<T>::max_size) 
 	    { 
+	    	cout << "ERRROR"<<endl;
 	        return -1; 
 	    } 
 	  
@@ -32,7 +33,7 @@ public:
 	    int i = Heap<T>::size - 1; 
 	    Heap<T>::data[i] = k; 
 	  
-	    while (i != 0 && Heap<T>::data[Heap<T>::parentIndex(i)] < Heap<T>::data[i]) 
+	    while (i != 0 && Heap<T>::data[Heap<T>::parentIndex(i)]->comparingVal() < Heap<T>::data[i]->comparingVal()) 
 	    { 
 	       Heap<T>::swap(&Heap<T>::data[i], &Heap<T>::data[Heap<T>::parentIndex(i)]); 
 	       i = Heap<T>::parentIndex(i); 
@@ -43,7 +44,7 @@ public:
 	void decreaseKey(int i, T new_val) 
 	{ 
 	    Heap<T>::data[i] = new_val; 
-	    while (i != 0 && Heap<T>::data[Heap<T>::parentIndex(i)] < Heap<T>::data[i]) 
+	    while (i != 0 && Heap<T>::data[Heap<T>::parentIndex(i)]->comparingVal() < Heap<T>::data[i]->comparingVal()) 
 	    { 
 	       Heap<T>::swap(&Heap<T>::data[i], &Heap<T>::data[Heap<T>::parentIndex(i)]); 
 	       i = Heap<T>::parentIndex(i); 
@@ -52,8 +53,6 @@ public:
   
 	T extractMax() 
 	{ 
-	    if (Heap<T>::size <= 0) 
-	        return INT_MAX; 
 	    if (Heap<T>::size == 1) 
 	    { 
 	        Heap<T>::size--; 
@@ -63,8 +62,7 @@ public:
 	    T root = Heap<T>::data[0]; 
 	    Heap<T>::data[0] = Heap<T>::data[Heap<T>::size-1]; 
 	    Heap<T>::size--; 
-	    heapify(0); 
-	  
+	    heapify(0,true); 
 	    return root; 
 	} 
 
@@ -79,15 +77,19 @@ public:
 	    decreaseKey(i, INT_MIN); 
 	    extractMax(); 
 	} 
-	void heapify(int i) 
+	void heapify(int i,bool print = false) 
 	{ 
 	    int l = Heap<T>::leftIndex(i); 
 	    int r = Heap<T>::rightIndex(i); 
 	    int biggest = i; 
-	    if (l < Heap<T>::size && Heap<T>::data[l] > Heap<T>::data[i]) 
+	    if (l < Heap<T>::size && Heap<T>::data[l]->comparingVal() > Heap<T>::data[biggest]->comparingVal()) 
+	    {
 	        biggest = l; 
-	    if (r < Heap<T>::size && Heap<T>::data[r] > Heap<T>::data[biggest]) 
+	    }
+	    if (r < Heap<T>::size && Heap<T>::data[r]->comparingVal() > Heap<T>::data[biggest]->comparingVal()) 
+	        {
 	        biggest = r; 
+	        }
 	    if (biggest != i) 
 	    { 
 	        Heap<T>::swap(&Heap<T>::data[i], &Heap<T>::data[biggest]); 

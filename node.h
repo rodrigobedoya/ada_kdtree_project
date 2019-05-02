@@ -2,47 +2,79 @@
 #define NODE_H
 
 #include <iostream>
-#include "cllist.h"
 #include <vector>
 using namespace std;
 
 template <typename T>
 class Node {
+
+    vector<T> position;
+    int index;      //index of current comparing value
+    int level;
+
 public:
+    Node* leftChild;
+    Node* rightChild;
 
     Node(T val)
     {
         position.push_back(val);
-        comparingVal = position.begin();
+        index = 0;
+        leftChild = NULL;
+        rightChild = NULL;
+        level = 0;
     }
 
-	Node(vector<T> args) 
-	{
-		for(int i = 0; i < args.size();i++)
-		{
-			position.push_back(args[i]);
-		}
-		comparingVal = position.begin();
-	}
-    
-    ClList<T> position;
-    Node* leftChild;
-    Node* rightChild;
-    ClIterator<T> comparingVal;
+    Node(vector<T> args) 
+    {
+        position = args;
+        index = 0;
+        level = 0;
+    }
+
+    void increaseLevel()
+    {
+        level++;
+    }
+
+    void getLevel()
+    {
+        return level;
+    }
+
+    void print()
+    {
+        //Format: { <level> : <position>}
+        cout << "{";
+        cout << level<<":";
+        for(int i = 0; i < position.size();i++)
+        {
+            if(i!= 0)
+                cout << ",";
+            cout << position[i];
+        }
+        cout << "} ";
+    }
+
+    T comparingVal()
+    {
+        return position[index];
+    }
 
     T nextComparingVal()
     {
-    	++comparingVal;
-    	return *comparingVal;
+        ++index;
+        if(index == position.size()){index = 0;}
+        return position[index];
     }
 
     bool operator < (Node<T> cmp)
     {
-        return (*comparingVal < *cmp.comparingVal); 
+        return (comparingVal() < cmp.comparingVal()); 
     } 
     bool operator > (Node<T> cmp)
     {
-        return (*comparingVal > *cmp.comparingVal); 
+        return (comparingVal() > cmp.comparingVal()); 
     } 
 
 };
