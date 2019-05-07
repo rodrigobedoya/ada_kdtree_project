@@ -42,6 +42,16 @@ public:
         return level;
     }
 
+    T pos(int i)
+    {
+        return position[i];
+    }
+
+    int getIndex()
+    {
+        return index;
+    }
+
     void print()
     {
         //Format: { <level> : <position>}

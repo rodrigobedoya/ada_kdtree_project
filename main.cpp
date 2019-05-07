@@ -4,12 +4,13 @@
 using namespace std;
 
 
-int main()
+int main(int argc, char **argv)
 {
 	KdTree<int> tree;
-	tree.load("data.txt");
+	tree.load(argv[1]);
 	tree.build();
 	tree.print();	
+	tree.write();
 /*	
 	Node<int>* ptrNode =new Node<int>({3,5});
 	Node<int>* ptrNode1 =new Node<int>({2,6});

@@ -9,7 +9,6 @@
 #include "node.h"
 #include "medianheap.h"
 
-
 using namespace std;
 
 template <typename T>
@@ -164,6 +163,55 @@ public:
 			}
 		}
 	}
+
+	void write()
+	{
+		ofstream file;
+		file.open("tree.txt");
+		file.close();
+
+		vector<Node<T>*> level;
+		level.push_back(root);
+		int cmp = root->getIndex();
+		writeLevel(level,cmp);
+	}
+
+	void writeLevel(vector<Node<T>*> level,int cmp)
+	{
+		ofstream file;
+		file.open("tree.txt",std::ios_base::app);
+
+		
+		file << cmp << " ";
+		bool flag = false;
+		vector<Node<T>*> new_level;
+		for(int i = 0; i < level.size();i++)
+		{
+			if(level[i]==NULL)
+			{
+				file << "N ";
+				new_level.push_back(NULL);
+				new_level.push_back(NULL);
+			}
+			else
+			{
+				flag = true;
+				file << level[i]->comparingVal() << " ";
+				new_level.push_back(level[i]->leftChild);
+				new_level.push_back(level[i]->rightChild);
+
+			}
+		}
+		file << endl;
+		++cmp;
+        if(cmp == k){cmp = 0;}
+		file.close();
+		if(flag)
+		{
+			writeLevel(new_level,cmp);
+		}
+	}
+
 
 };
 
