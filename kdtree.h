@@ -102,7 +102,8 @@ public:
 
 		MedianHeap<Node<T>*> left(heap.left);
 		MedianHeap<Node<T>*> right(heap.right);
-		
+		heap.clear();
+
 		buildRecursive(left,root->leftChild);
 		buildRecursive(right,root->rightChild);
 	}
@@ -122,6 +123,7 @@ public:
 
 			MedianHeap<Node<T>*> left(heap.left);
 			MedianHeap<Node<T>*> right(heap.right);
+			heap.clear();
 			
 			buildRecursive(left,cmp->leftChild);
 			buildRecursive(right,cmp->rightChild);
@@ -142,7 +144,7 @@ public:
 
 		else
 		{
-			if (*(node->comparingVal) < *(cmp->comparingVal))
+			if (node->comparingVal() < cmp->comparingVal())
 			{
 				node->nextComparingVal();
 				if(cmp->leftChild == NULL)

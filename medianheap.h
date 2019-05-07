@@ -42,6 +42,12 @@ public:
 		cout << endl;
 	}
 
+	void clear()
+	{
+		delete right;
+		delete left;
+	}
+
 	int getSize()
 	{
 		return (left->getSize() + right->getSize());
