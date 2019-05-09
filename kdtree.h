@@ -164,11 +164,14 @@ public:
 		}
 	}
 
+	//write tree structure in file
 	void write()
 	{
+		//erase previous data in file
 		ofstream file;
 		file.open("tree.txt");
 		file.close();
+
 
 		vector<Node<T>*> level;
 		level.push_back(root);
