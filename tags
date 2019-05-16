@@ -1,0 +1,110 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+HEAP_H	heap.h	2;"	d
+Heap	heap.h	/^	Heap(){}$/;"	f	class:Heap
+Heap	heap.h	/^class Heap$/;"	c
+KDTREE_H	kdtree.h	2;"	d
+KdTree	kdtree.h	/^	KdTree()$/;"	f	class:KdTree
+KdTree	kdtree.h	/^	KdTree(string filename)$/;"	f	class:KdTree
+KdTree	kdtree.h	/^class KdTree$/;"	c
+MAXH_H	maxheap.h	2;"	d
+MEDH_H	medianheap.h	2;"	d
+MINH_H	minheap.h	2;"	d
+MaxHeap	maxheap.h	/^	MaxHeap(int max_size) $/;"	f	class:MaxHeap
+MaxHeap	maxheap.h	/^class MaxHeap : public Heap<T>$/;"	c
+MedianHeap	medianheap.h	/^	MedianHeap(Heap<T> *heap)$/;"	f	class:MedianHeap
+MedianHeap	medianheap.h	/^	MedianHeap(int size)$/;"	f	class:MedianHeap
+MedianHeap	medianheap.h	/^class MedianHeap $/;"	c
+MinHeap	minheap.h	/^	MinHeap(int max_size) $/;"	f	class:MinHeap
+MinHeap	minheap.h	/^class MinHeap : public Heap<T>$/;"	c
+NODE_H	node.h	2;"	d
+Node	node.h	/^    Node(T val)$/;"	f	class:Node
+Node	node.h	/^    Node(vector<T> args) $/;"	f	class:Node
+Node	node.h	/^class Node {$/;"	c
+arr	draw.py	/^arr = line.split(" ")$/;"	v
+at	heap.h	/^    T at(int index)$/;"	f	class:Heap
+ax	draw.py	/^	ax = fig.add_subplot(111)$/;"	v
+ax	draw.py	/^	ax = fig.add_subplot(111,projection = '3d')$/;"	v
+build	kdtree.h	/^	void build()$/;"	f	class:KdTree
+buildRecursive	kdtree.h	/^	void buildRecursive(MedianHeap<Node<T>*> heap,Node<T>*& cmp)$/;"	f	class:KdTree
+clear	medianheap.h	/^	void clear()$/;"	f	class:MedianHeap
+comparingVal	node.h	/^    T comparingVal()$/;"	f	class:Node
+data	heap.h	/^	T *data;  $/;"	m	class:Heap
+decreaseKey	heap.h	/^    virtual void decreaseKey() {}$/;"	f	class:Heap
+decreaseKey	maxheap.h	/^	void decreaseKey(int i, T new_val) $/;"	f	class:MaxHeap
+decreaseKey	minheap.h	/^	void decreaseKey(int i, T new_val) $/;"	f	class:MinHeap
+deleteKey	maxheap.h	/^	void deleteKey(int i) $/;"	f	class:MaxHeap
+deleteKey	minheap.h	/^	void deleteKey(int i) $/;"	f	class:MinHeap
+drawFromLevel	drawingfunctions.py	/^def drawFromLevel(level_data,old_dimensions,dimensions,new_dimensions,plt):$/;"	f
+drawLines	drawingfunctions.py	/^def drawLines(maxX,maxY,plt):$/;"	f
+drawUserPoint	drawingfunctions.py	/^def drawUserPoint(k,argv,plt):$/;"	f
+extractMax	maxheap.h	/^	T extractMax() $/;"	f	class:MaxHeap
+extractMedian	medianheap.h	/^	void extractMedian()$/;"	f	class:MedianHeap
+extractMin	minheap.h	/^	T extractMin() $/;"	f	class:MinHeap
+extractRoot	heap.h	/^    virtual T extractRoot(){}$/;"	f	class:Heap
+extractRoot	maxheap.h	/^	T extractRoot()$/;"	f	class:MaxHeap
+extractRoot	minheap.h	/^	T extractRoot()$/;"	f	class:MinHeap
+f	draw.py	/^f = open(sys.argv[1], "r")$/;"	v
+fig	draw.py	/^fig = plt.figure()$/;"	v
+getIndex	node.h	/^    int getIndex()$/;"	f	class:Node
+getLevel	node.h	/^    int getLevel()$/;"	f	class:Node
+getMax	maxheap.h	/^    T getMax() $/;"	f	class:MaxHeap
+getMedian	medianheap.h	/^	T getMedian()$/;"	f	class:MedianHeap
+getMin	minheap.h	/^    T getMin() $/;"	f	class:MinHeap
+getPointsPositions	drawingfunctions.py	/^def getPointsPositions(file,positions,num_points,k):$/;"	f
+getRoot	heap.h	/^    T getRoot() $/;"	f	class:Heap
+getSize	heap.h	/^    int getSize()$/;"	f	class:Heap
+getSize	medianheap.h	/^	int getSize()$/;"	f	class:MedianHeap
+heapify	heap.h	/^    virtual void heapify() {}$/;"	f	class:Heap
+heapify	maxheap.h	/^	void heapify(int i,bool print = false) $/;"	f	class:MaxHeap
+heapify	minheap.h	/^	void heapify(int i) $/;"	f	class:MinHeap
+increaseLevel	node.h	/^    void increaseLevel()$/;"	f	class:Node
+index	node.h	/^    int index;      \/\/index of current comparing value$/;"	m	class:Node
+input_point	draw.py	/^	input_point = True$/;"	v
+input_point	draw.py	/^input_point = False$/;"	v
+insert	heap.h	/^    virtual int insert() {}$/;"	f	class:Heap
+insert	kdtree.h	/^	void insert(Node<T>* node, Node<T>* cmp)$/;"	f	class:KdTree
+insert	maxheap.h	/^  	int insert(T k) $/;"	f	class:MaxHeap
+insert	medianheap.h	/^	void insert(T value)$/;"	f	class:MedianHeap
+insert	minheap.h	/^	int insert(T k) $/;"	f	class:MinHeap
+k	draw.py	/^k = int(arr[1])$/;"	v
+k	kdtree.h	/^	int k;$/;"	m	class:KdTree
+left	medianheap.h	/^	MaxHeap<T> * left;$/;"	m	class:MedianHeap
+leftChild	node.h	/^    Node* leftChild;$/;"	m	class:Node
+leftIndex	heap.h	/^    int leftIndex(int i) $/;"	f	class:Heap
+level	node.h	/^    int level;$/;"	m	class:Node
+line	draw.py	/^line = f.readline()$/;"	v
+load	kdtree.h	/^	void load(string fileName)$/;"	f	class:KdTree
+main	main.cpp	/^int main(int argc, char **argv)$/;"	f
+maxX	draw.py	/^	maxX = 10$/;"	v
+maxY	draw.py	/^	maxY = 10$/;"	v
+max_size	heap.h	/^	int max_size;$/;"	m	class:Heap
+nextComparingVal	node.h	/^    T nextComparingVal()$/;"	f	class:Node
+nodes	kdtree.h	/^	vector<Node<T>*> nodes;$/;"	m	class:KdTree
+operator <	node.h	/^    bool operator < (Node<T> cmp)$/;"	f	class:Node
+operator >	node.h	/^    bool operator > (Node<T> cmp)$/;"	f	class:Node
+operator []	heap.h	/^    T operator [] (int index)$/;"	f	class:Heap
+parentIndex	heap.h	/^	int parentIndex(int i)$/;"	f	class:Heap
+points	draw.py	/^points = int(arr[0])$/;"	v
+pos	node.h	/^    T pos(int i)$/;"	f	class:Node
+position	node.h	/^    vector<T> position;$/;"	m	class:Node
+positions	draw.py	/^positions = []$/;"	v
+print	heap.h	/^    void print()$/;"	f	class:Heap
+print	kdtree.h	/^	void print()$/;"	f	class:KdTree
+print	medianheap.h	/^	void print()$/;"	f	class:MedianHeap
+print	node.h	/^    void print()$/;"	f	class:Node
+printRecursive	kdtree.h	/^	void printRecursive(Node<T>* node)$/;"	f	class:KdTree
+right	medianheap.h	/^	MinHeap<T> * right;$/;"	m	class:MedianHeap
+rightChild	node.h	/^    Node* rightChild;$/;"	m	class:Node
+rightIndex	heap.h	/^    int rightIndex(int i) $/;"	f	class:Heap
+root	kdtree.h	/^	Node<T>* root;$/;"	m	class:KdTree
+size	heap.h	/^	int size;$/;"	m	class:Heap
+size	medianheap.h	/^	int size;$/;"	m	class:MedianHeap
+swap	heap.h	/^	void swap(T *x, T *y) $/;"	f	class:Heap
+write	kdtree.h	/^	void write()$/;"	f	class:KdTree
+writeLevel	kdtree.h	/^	void writeLevel(vector<Node<T>*> level,int cmp)$/;"	f	class:KdTree
+~Heap	heap.h	/^    ~Heap(){}$/;"	f	class:Heap

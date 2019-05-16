@@ -52,7 +52,7 @@ public:
 	 	{
 	 		vector<T> pos(k,0);
 	 		getline(file, line);
-	 		stringstream sstream2;
+	 		/* stringstream sstream2; */
 	 		sstream.clear();
 	 		sstream << line;
 	 		
