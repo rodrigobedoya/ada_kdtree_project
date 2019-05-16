@@ -18,47 +18,50 @@ int main(int argc, char **argv)
 	string cmd = "python3 draw.py " + fileName;
 	system(cmd.c_str());
 
-    Node<int> *nodo = new Node<int>({6, 8});
+    
+	string line; 
+	
+	while(true) 
+	{ 
+		 vector<int> user_point; 
+
+		 stringstream sstream; 
+		 cout << "Find nearest neighbor of point: "; 
+		 getline(cin,line); 
+		 sstream << line; 
+		 string cmd = "python3 draw.py " + fileName; 
+		 int inputPos, i = 0; 
+		 while(sstream >> inputPos) 
+		 { 
+		 	user_point.push_back(inputPos); 
+		 	cmd += " " + to_string(user_point[i++]); 
+		 } 
+
+		 if(user_point.size() < tree.k) 
+		 	cout << "ERROR: too few point coordinates. Insert new coordinates (k="<<tree.k<<")"<<endl; 
+		
+
+		 else if(user_point.size() > tree.k) 
+		 	cout << "ERROR: too many point coordinates. Insert new coordinates (k="<<tree.k<<")"<<endl; 
+		
+		 else 
+		 { 
+		 	//find nearest point 
+
+		 	Node<int> *nodo = new Node<int>(user_point);
    
-    cout << endl;
-    nodo->print();
-    (tree.search(nodo))? cout << "Existe nodo\n" : cout << "No existe\n";
+		    cout << endl;
+		    nodo->print();
+		    (tree.search(nodo))? cout << "Existe nodo\n" : cout << "No existe\n";
 
-    tree.buscarVecinoskk(nodo);
-	/* string line; */
+		    tree.buscarVecinoskk(nodo);
+
+		 	system(cmd.c_str()); 
+		 } 
+
+	 } 
 	
-	/* while(true) */
-	/* { */
-		/* vector<int> user_point; */
-
-		/* stringstream sstream; */
-		/* cout << "Find nearest neighbor of point: "; */
-		/* getline(cin,line); */
-		/* sstream << line; */
-		/* string cmd = "python3 draw.py " + fileName; */
-		/* int inputPos, i = 0; */
-		/* while(sstream >> inputPos) */
-		/* { */
-		/* 	user_point.push_back(inputPos); */
-		/* 	cmd += " " + to_string(user_point[i++]); */
-		/* } */
-
-		/* if(user_point.size() < tree.k) */
-		/* 	cout << "ERROR: too few point coordinates. Insert new coordinates (k="<<tree.k<<")"<<endl; */
-		
-
-		/* else if(user_point.size() > tree.k) */
-		/* 	cout << "ERROR: too many point coordinates. Insert new coordinates (k="<<tree.k<<")"<<endl; */
-		
-		/* else */
-		/* { */
-		/* 	//find nearest point */
-		/* 	system(cmd.c_str()); */
-		/* } */
-
-	/* } */
-	
-/*	
+	/*
 	Node<int>* ptrNode =new Node<int>({3,5});
 	Node<int>* ptrNode1 =new Node<int>({2,6});
 	Node<int>* ptrNode2 =new Node<int>({1,7});
@@ -98,6 +101,6 @@ int main(int argc, char **argv)
 	medheap.insert(ptrNode5);
 	medheap.print();
 	cout<< endl;
-*/
 
+*/
 }

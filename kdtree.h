@@ -88,8 +88,6 @@ public:
 		}
 		
 	}
-
-
 	// create balanced tree(need loadedd data)
 	void build()
 	{
@@ -243,24 +241,44 @@ public:
         return searchR(root, node, 0);
     }
 
-    void buscarVecinoskk(Node<T> *nodo) {
-        if (!search(nodo))
-            return;
+    void getDistancekk(Node<T>* nodo,Node<T>* node, map<double, Node<T>*> &distancias)
+    {
+    	if(node->leftChild != NULL)
+        {
+        	getDistancekk(nodo,node->leftChild,distancias);
+        }
 
-        map<double, Node<T>*> distancias;
-        for (int i = 0; i < nodes.size(); ++i) {
-            distancias.insert(pair<double, Node<T>*> (nodo->ecuclidiana(nodes[i]), nodes[i]));
-        }
-int i= 0;
-        for(auto it = distancias.begin(); it != distancias.end(); ++it) {
-        if (i != 0) {
-        cout << it->first << " " << it->second << endl;
-        }
-        if(i==3)
-            break;
-        i++;
+        if(node->rightChild != NULL)
+        {
+        	getDistancekk(nodo,node->rightChild,distancias);
+        }	
+        
+        distancias.insert(pair<double, Node<T>*> (nodo->ecuclidiana(node), node));
+        
     }
-    
+
+    void buscarVecinoskk(Node<T> *nodo) 
+    {
+        map<double, Node<T>*> distancias;
+
+        if(root->leftChild != NULL)
+        {
+        	getDistancekk(nodo,root->leftChild,distancias);
+        }
+
+        if(root->rightChild != NULL)
+        {
+        	getDistancekk(nodo,root->rightChild,distancias);
+        }
+        
+
+
+		int i= 0;
+		auto it = distancias.begin();
+	    cout << it->first << " ";
+	    it->second->print();
+	    cout<<endl;
+	    
     }
 };
 
