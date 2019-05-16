@@ -240,6 +240,23 @@ public:
     bool search(Node<T> *node) {
         return searchR(root, node, 0);
     }
+    
+    bool searchkk(Node<T> *root, Node<T> *node) {
+        if (root == NULL)
+            return false;
+        if (equalNodes(root,node))
+            return true;
+
+        if (searchkk(root->leftChild, node))
+            return true;
+
+        return searchkk(root->rightChild, node);
+        
+    }
+
+    bool searchKK(Node<T> *node) {
+        return searchkk(root, node);
+    }
 
     void getDistancekk(Node<T>* nodo,Node<T>* node, map<double, Node<T>*> &distancias)
     {

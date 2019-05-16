@@ -18,7 +18,9 @@ int main(int argc, char **argv)
 	string cmd = "python3 draw.py " + fileName;
 	system(cmd.c_str());
 
-    
+    Node<int> *nodo = new Node<int>({2, 5});
+    (tree.search(nodo))? cout << "Existe nodo\n" : cout << "No existe nodo\n";
+    (tree.searchKK(nodo))? cout << "Existe nodo kk\n" : cout << "No existe nodo kk\n";
 	string line; 
 	
 	while(true) 
