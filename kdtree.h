@@ -6,6 +6,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <cmath>
 #include "node.h"
 #include "medianheap.h"
 
@@ -214,7 +215,6 @@ public:
 			writeLevel(new_level,cmp);
 		}
 	}
-
 
 };
 
