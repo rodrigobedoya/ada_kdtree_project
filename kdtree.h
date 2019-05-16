@@ -6,6 +6,8 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <cmath>
+#include <map>
 #include "node.h"
 #include "medianheap.h"
 
@@ -239,6 +241,26 @@ public:
 
     bool search(Node<T> *node) {
         return searchR(root, node, 0);
+    }
+
+    void buscarVecinoskk(Node<T> *nodo) {
+        if (!search(nodo))
+            return;
+
+        map<double, Node<T>*> distancias;
+        for (int i = 0; i < nodes.size(); ++i) {
+            distancias.insert(pair<double, Node<T>*> (nodo->ecuclidiana(nodes[i]), nodes[i]));
+        }
+int i= 0;
+        for(auto it = distancias.begin(); it != distancias.end(); ++it) {
+        if (i != 0) {
+        cout << it->first << " " << it->second << endl;
+        }
+        if(i==3)
+            break;
+        i++;
+    }
+    
     }
 };
 

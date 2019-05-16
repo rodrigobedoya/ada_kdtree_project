@@ -3,6 +3,8 @@
 #include <iomanip>
 #include <chrono>
 #include <vector>
+/* #include "node.h" */
+/* #include "kdtree.h" */
 
 using namespace std;
 
@@ -19,7 +21,7 @@ double prom_array(vector<M> arr) { // pasas el vector
 
 // funcion que devuelve el tiempo promedio de correr una función y tu pones cuantass test quieres que haga
 template <typename T>
-double timer(T (*funcion)(T), T arg, int num_tests) {
+double timer(T (*funcion)(Node<T>*), Node<T> *arg, int num_tests) {
     vector<double> promarr;
     int i = 0;
     chrono::time_point<chrono::high_resolution_clock> start, end; // declaracion de variables inicio y fin 
