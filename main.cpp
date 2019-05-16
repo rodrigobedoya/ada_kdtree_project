@@ -18,38 +18,41 @@ int main(int argc, char **argv)
 	string cmd = "python3 draw.py " + fileName;
 	system(cmd.c_str());
 
-	string line;
+    Node<int> *nodo = new Node<int>({1, 1});
+    
+    (tree.search(nodo))? cout << "Existe nodo\n" : cout << "No existe\n";
+	/* string line; */
 	
-	while(true)
-	{
-		vector<int> user_point;
+	/* while(true) */
+	/* { */
+		/* vector<int> user_point; */
 
-		stringstream sstream;
-		cout << "Find nearest neighbor of point: ";
-		getline(cin,line);
-		sstream << line;
-		string cmd = "python3 draw.py " + fileName;
-		int inputPos, i = 0;
-		while(sstream >> inputPos)
-		{
-			user_point.push_back(inputPos);
-			cmd += " " + to_string(user_point[i++]);
-		}
+		/* stringstream sstream; */
+		/* cout << "Find nearest neighbor of point: "; */
+		/* getline(cin,line); */
+		/* sstream << line; */
+		/* string cmd = "python3 draw.py " + fileName; */
+		/* int inputPos, i = 0; */
+		/* while(sstream >> inputPos) */
+		/* { */
+		/* 	user_point.push_back(inputPos); */
+		/* 	cmd += " " + to_string(user_point[i++]); */
+		/* } */
 
-		if(user_point.size() < tree.k)
-			cout << "ERROR: too few point coordinates. Insert new coordinates (k="<<tree.k<<")"<<endl;
+		/* if(user_point.size() < tree.k) */
+		/* 	cout << "ERROR: too few point coordinates. Insert new coordinates (k="<<tree.k<<")"<<endl; */
 		
 
-		else if(user_point.size() > tree.k)
-			cout << "ERROR: too many point coordinates. Insert new coordinates (k="<<tree.k<<")"<<endl;
+		/* else if(user_point.size() > tree.k) */
+		/* 	cout << "ERROR: too many point coordinates. Insert new coordinates (k="<<tree.k<<")"<<endl; */
 		
-		else
-		{
-			//find nearest point
-			system(cmd.c_str());
-		}
+		/* else */
+		/* { */
+		/* 	//find nearest point */
+		/* 	system(cmd.c_str()); */
+		/* } */
 
-	}
+	/* } */
 	
 /*	
 	Node<int>* ptrNode =new Node<int>({3,5});

@@ -215,7 +215,31 @@ public:
 		}
 	}
 
+    bool equalNodes(Node<T> *node1,Node<T> *node2) {
+        for (int i = 0; i < k; ++i) {
+            if (node1->pos(i) != node2->pos(i))
+                return false;
+        }
+        return true;
+    }
 
+    bool searchR(Node<T> *root, Node<T> *node, unsigned coordinates) {
+        if (root == NULL)
+            return false;
+        if (equalNodes(root,node))
+            return true;
+        unsigned axis = coordinates % k;
+
+        if (node->pos(axis) < root->pos(axis))
+            return searchR(root->leftChild, node, coordinates + 1);
+
+        return searchR(root->rightChild, node, coordinates + 1);
+        
+    }
+
+    bool search(Node<T> *node) {
+        return searchR(root, node, 0);
+    }
 };
 
 #endif
