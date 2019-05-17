@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 
     Node<int> *nodo = new Node<int>({6, 8});
     (tree.search(nodo))? cout << "Existe nodo\n" : cout << "No existe nodo\n";
-    (tree.searchKK(nodo))? cout << "Existe nodo kk\n" : cout << "No existe nodo kk\n";
+    (tree.searchKK(nodo))? cout << "Existe nodo naive\n" : cout << "No existe nodo naive\n";
 	
     chrono::time_point<chrono::high_resolution_clock> start, end;
 
@@ -30,13 +30,13 @@ int main(int argc, char **argv)
     tree.search(nodo);
     end = chrono::high_resolution_clock::now();
     chrono::duration<double> runtime = end - start;
-    cout << "Bucar nodo gotto: "<< fixed << setprecision(10) << runtime.count() << " secs" << endl;
+    cout << "Bucar nodo: "<< fixed << setprecision(10) << runtime.count() << " secs" << endl;
     
     start = chrono::high_resolution_clock::now();
     tree.searchKK(nodo);
     end = chrono::high_resolution_clock::now();
     chrono::duration<double> runtime2 = end - start;
-    cout << "Buscar nodo kk: "<< fixed << setprecision(10) << runtime2.count() << " secs" << endl;
+    cout << "Buscar nodo naive: "<< fixed << setprecision(10) << runtime2.count() << " secs" << endl;
     
 
 
@@ -74,14 +74,14 @@ int main(int argc, char **argv)
 		    tree.buscarVecinoskk(nodo);
             end = chrono::high_resolution_clock::now();
             chrono::duration<double> runtime3 = end - start;
-            cout << "Buscar vecino kk: "<< fixed << setprecision(10) << runtime3.count() << " secs" << endl;
+            cout << "Buscar vecino naive: "<< fixed << setprecision(10) << runtime3.count() << " secs" << endl;
 		    
 
 		    start = chrono::high_resolution_clock::now();
 		    tree.buscarVecinoGotto(nodo);
             end = chrono::high_resolution_clock::now();
             chrono::duration<double> runtime4 = end - start;
-            cout << "Buscar vecino gotto: "<< fixed << setprecision(10) << runtime4.count() << " secs" << endl;
+            cout << "Buscar vecino: "<< fixed << setprecision(10) << runtime4.count() << " secs" << endl;
             
 		    cout << endl;
 
