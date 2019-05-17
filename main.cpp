@@ -1,4 +1,6 @@
 #include <iostream>
+#include <chrono>
+#include <iomanip>
 #include "kdtree.h"
 #include <unistd.h>
 #include <python3.6m/Python.h>
@@ -18,10 +20,27 @@ int main(int argc, char **argv)
 	string cmd = "python3 draw.py " + fileName;
 	system(cmd.c_str());
 
-    Node<int> *nodo = new Node<int>({2, 5});
+    Node<int> *nodo = new Node<int>({6, 8});
     (tree.search(nodo))? cout << "Existe nodo\n" : cout << "No existe nodo\n";
     (tree.searchKK(nodo))? cout << "Existe nodo kk\n" : cout << "No existe nodo kk\n";
-	string line; 
+	
+    chrono::time_point<chrono::high_resolution_clock> start, end;
+
+    start = chrono::high_resolution_clock::now();
+    tree.search(nodo);
+    end = chrono::high_resolution_clock::now();
+    chrono::duration<double> runtime = end - start;
+    cout << "Bucar nodo gotto: "<< fixed << setprecision(10) << runtime.count() << " secs" << endl;
+    
+    start = chrono::high_resolution_clock::now();
+    tree.searchKK(nodo);
+    end = chrono::high_resolution_clock::now();
+    chrono::duration<double> runtime2 = end - start;
+    cout << "Buscar nodo kk: "<< fixed << setprecision(10) << runtime2.count() << " secs" << endl;
+    
+
+
+    string line; 
 	
 	while(true) 
 	{ 
@@ -56,53 +75,16 @@ int main(int argc, char **argv)
 		    nodo->print();
 		    (tree.search(nodo))? cout << "Existe nodo\n" : cout << "No existe\n";
 
+            start = chrono::high_resolution_clock::now();
 		    tree.buscarVecinoskk(nodo);
+            end = chrono::high_resolution_clock::now();
+            chrono::duration<double> runtime3 = end - start;
+            cout << "Buscar vecino kk: "<< fixed << setprecision(10) << runtime3.count() << " secs" << endl;
+
 
 		 	system(cmd.c_str()); 
 		 } 
 
 	 } 
 	
-	/*
-	Node<int>* ptrNode =new Node<int>({3,5});
-	Node<int>* ptrNode1 =new Node<int>({2,6});
-	Node<int>* ptrNode2 =new Node<int>({1,7});
-	Node<int>* ptrNode3 =new Node<int>({8,9});
-	Node<int>* ptrNode4 =new Node<int>({9,10});
-	Node<int>* ptrNode5 =new Node<int>({1,2});
-
-	cout << endl;
-	MinHeap<Node<int>*> minheap(6);
-	minheap.insert(ptrNode);
-	minheap.insert(ptrNode1);
-	minheap.insert(ptrNode2);
-	minheap.insert(ptrNode3);
-	minheap.insert(ptrNode4);
-	minheap.insert(ptrNode5);
-	minheap.print();
-	cout<< endl;
-
-	cout << endl;
-	MaxHeap<Node<int>*> maxheap(6);
-	maxheap.insert(ptrNode);
-	maxheap.insert(ptrNode1);
-	maxheap.insert(ptrNode2);
-	maxheap.insert(ptrNode3);
-	maxheap.insert(ptrNode4);
-	maxheap.insert(ptrNode5);
-	maxheap.print();
-	cout<< endl;
-
-	cout << endl;
-	MedianHeap<Node<int>*> medheap(6);
-	medheap.insert(ptrNode);
-	medheap.insert(ptrNode1);
-	medheap.insert(ptrNode2);
-	medheap.insert(ptrNode3);
-	medheap.insert(ptrNode4);
-	medheap.insert(ptrNode5);
-	medheap.print();
-	cout<< endl;
-
-*/
 }

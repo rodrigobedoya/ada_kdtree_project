@@ -287,8 +287,6 @@ public:
         {
         	getDistancekk(nodo,root->rightChild,distancias);
         }
-        
-
 
 		int i= 0;
 		auto it = distancias.begin();
