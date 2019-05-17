@@ -3,7 +3,7 @@
 #include <iomanip>
 #include "kdtree.h"
 #include <unistd.h>
-#include <python3.6m/Python.h>
+#include <python3.5m/Python.h>
 #include <string>
 
 using namespace std;
@@ -67,20 +67,25 @@ int main(int argc, char **argv)
 		
 		 else 
 		 { 
-		 	//find nearest point 
 
 		 	Node<int> *nodo = new Node<int>(user_point);
    
-		    cout << endl;
-		    nodo->print();
-		    (tree.search(nodo))? cout << "Existe nodo\n" : cout << "No existe\n";
-
             start = chrono::high_resolution_clock::now();
 		    tree.buscarVecinoskk(nodo);
             end = chrono::high_resolution_clock::now();
             chrono::duration<double> runtime3 = end - start;
             cout << "Buscar vecino kk: "<< fixed << setprecision(10) << runtime3.count() << " secs" << endl;
+		    
 
+		    start = chrono::high_resolution_clock::now();
+		    tree.buscarVecinoGotto(nodo);
+            end = chrono::high_resolution_clock::now();
+            chrono::duration<double> runtime4 = end - start;
+            cout << "Buscar vecino gotto: "<< fixed << setprecision(10) << runtime4.count() << " secs" << endl;
+            
+		    cout << endl;
+
+		    
 
 		 	system(cmd.c_str()); 
 		 } 

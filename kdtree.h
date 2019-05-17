@@ -258,42 +258,118 @@ public:
         return searchkk(root, node);
     }
 
-    void getDistancekk(Node<T>* nodo,Node<T>* node, map<double, Node<T>*> &distancias)
+    void getDistancekk(Node<T>* nodo,Node<T>* node, double &minDist,Node<T>* &nn)
     {
+    	double dist = node->ecuclidiana(nodo);
+    	if(dist < minDist)
+    	{
+    		minDist = dist;
+    		nn = node;
+    	}
+
     	if(node->leftChild != NULL)
         {
-        	getDistancekk(nodo,node->leftChild,distancias);
+        	getDistancekk(nodo,node->leftChild,minDist,nn);
         }
 
         if(node->rightChild != NULL)
         {
-        	getDistancekk(nodo,node->rightChild,distancias);
+        	getDistancekk(nodo,node->rightChild,minDist,nn);
         }	
-        
-        distancias.insert(pair<double, Node<T>*> (nodo->ecuclidiana(node), node));
+     
         
     }
 
     void buscarVecinoskk(Node<T> *nodo) 
     {
-        map<double, Node<T>*> distancias;
+    	if(root == NULL)
+    	{
+    		return;
+    	}
+    	double minDist = root->ecuclidiana(nodo);
+    	Node<T> * nn = root;
+
 
         if(root->leftChild != NULL)
         {
-        	getDistancekk(nodo,root->leftChild,distancias);
+        	getDistancekk(nodo,root->leftChild,minDist,nn);
         }
 
         if(root->rightChild != NULL)
         {
-        	getDistancekk(nodo,root->rightChild,distancias);
+        	getDistancekk(nodo,root->rightChild,minDist,nn);
         }
-
-		int i= 0;
-		auto it = distancias.begin();
-	    cout << it->first << " ";
-	    it->second->print();
+        
+        cout << "KK:" << endl;
+		cout << minDist << " ";
+	    nn->print();
 	    cout<<endl;
+
+	    ofstream file;
+		file.open("nn.txt");
+		
+		for(int i = 0; i < k; i++)
+		{
+			file << nn->pos(i) << " ";
+		}
+		file.close();
 	    
+    }
+
+    void buscarVecinoGottoRecursive(Node<T> *node, Node<T> *current, double &minDist, Node<T>* &nn)
+    {
+    	if(current == NULL)
+    	{
+    		return;
+    	}
+    	double dist = current->ecuclidiana(node);
+    	if(dist < minDist)
+    	{
+    		minDist = dist;
+    		nn = current;
+    	}
+    	int currentDim = current->getIndex();
+    	if(node->pos(currentDim)-minDist <= current->pos(currentDim))
+    	{
+    		buscarVecinoGottoRecursive(node,current->leftChild,minDist,nn);
+    	}
+    	if(node->pos(currentDim)+minDist > current->pos(currentDim))
+    	{
+    		buscarVecinoGottoRecursive(node,current->rightChild,minDist,nn);	
+    	}
+    	return;
+    }
+
+    void buscarVecinoGotto(Node<T> *node)
+    {
+    	if(root == NULL)
+    	{
+    		return;
+    	}
+    	double minDist = root->ecuclidiana(node);
+    	Node<T> * nn = root;
+    	int currentDim = root->getIndex();
+    	if(node->pos(currentDim)-minDist <= root->pos(currentDim))
+    	{
+    		buscarVecinoGottoRecursive(node,root->leftChild,minDist,nn);
+    	}
+    	if(node->pos(currentDim)+minDist > root->pos(currentDim))
+    	{
+    		buscarVecinoGottoRecursive(node,root->rightChild,minDist,nn);	
+    	}
+    	cout << "GOTTO: "<<endl << minDist<<" ";
+    	nn->print();
+    	cout <<endl;
+
+    	ofstream file;
+		file.open("nn.txt");
+		
+		for(int i = 0; i < k; i++)
+		{
+			file << nn->pos(i) << " ";
+		}
+		file.close();
+
     }
 };
 

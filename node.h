@@ -88,7 +88,12 @@ public:
     } 
 
     double ecuclidiana(Node<T> *goal) {
-        return (double)sqrt((pow(goal->pos(0) - this->pos(0), 2) + pow(goal->pos(1) - this->pos(1), 2)));
+        double answer = 0;
+        for(int i = 0; i < position.size();i++)
+        {
+            answer += pow((goal->pos(i)) - this->pos(i),2);
+        }
+        return (double)sqrt(answer);
     }
 };
 
