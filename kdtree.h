@@ -32,6 +32,25 @@ public:
 		load(filename);
 	}
 
+  void allocateDim(int k, int numberOfNodes) : k(k) {
+    nodes.reserve(numberOfNodes);
+  }
+
+  void insertNode(T x, ...) {
+    va_list arguments;
+    for (int i = 0; i < nodes.size(); i++) {
+      vector<T> pos(k, 0);
+      va_start (arguments, x);
+      for (int j = 0; j < k; j++) {
+        pos[j] = va_arg(arguments, T);
+      }
+      va_end (arguments);
+	 		
+      Node<T> * temp = new Node<T>(pos);
+	 		nodes.push_back(temp);
+    }
+  }
+
 	//read data from file and add it to vector: nodes
 	void load(string fileName)
 	{
